@@ -26,7 +26,7 @@ function App() {
       <WelcomeMessage />
       <Header />
       <MainContent />
-      <UserProfile name="Michael" age="10" bio="Loves God" />
+      <UserProfile name="Alice" age="25" bio="Loves hiking and photography" />
       <Footer />
       <div className="card">
         <button onClick={() => setCount((count) => count + 1)}>
