@@ -1,13 +1,4 @@
-import React from 'react';
-const UserProfile =  () => {
-    return(
-        <UserContext.Consumer>
-           <div>
-                <p>Name: {name}</p>
-                <p>Email: {email}</p>
-            </div>
-        </UserContext.Consumer>
-    );
-};
+import React, {useContext} from 'react';
+const UserProfile =  () => useContext(UserContext);
 
 export default UserProfile;
