@@ -1,12 +1,18 @@
 import React from 'react';
-import Navbar from './Navbar';
 
-const Services = () => {
+function Services() {
     return (
-        <div>
-            <Navbar />
-        </div>
+        <>
+      <div style={{ padding: '20px' }}>
+        <h1>Our Services</h1>
+        <ul>
+          <li>Technology Consulting</li>
+          <li>Market Analysis</li>
+          <li>Product Development</li>
+        </ul>
+      </div>
+      </>
     );
-};
+  }
 
-export default Services;
+  export default Services;
