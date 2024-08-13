@@ -4,8 +4,8 @@ import {Link} from 'react-router-dom'
 
 const Navbar = () => {
     return (
-        <nav>
-           <ul>
+        <nav style = {{ width: '100%', display: 'flex' }}>
+           <ul style = {{ listStyleType: 'none', display: 'flex', gap: '20px', width: '100%', padding: '0px 20px' }}>
             <li><Link to = '/'> Home </Link></li>
             <li><Link to = '/about'> About </Link></li>
             <li><Link to = '/services'> Services </Link></li>
