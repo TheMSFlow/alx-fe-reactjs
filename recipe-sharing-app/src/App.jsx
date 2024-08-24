@@ -3,6 +3,7 @@ import RecipeList from './components/RecipeList';
 import AddRecipeForm from './components/AddRecipeForm';
 import RecipeDetails from './components/RecipeDetails';
 import SearchBar from './components/SearchBar';
+import Recommendations from './components/Recommendations';
 
 function App() {
   return (
@@ -11,6 +12,7 @@ function App() {
         <h1>Recipe Sharing App</h1>
         <SearchBar style = {{marginBottom: "20px"}}/> 
         <AddRecipeForm />
+        <Recommendations />
         <Routes>
           <Route path="/" element={<RecipeList />} />
           <Route path="/recipe/:recipeId" element={<RecipeDetails />} />
