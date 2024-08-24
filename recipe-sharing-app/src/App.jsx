@@ -1,16 +1,26 @@
-import { useState } from 'react'
-import './App.css'
-import RecipeList from './components/RecipeList'
-import AddRecipeForm from './components/AddRecipeForm'
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import RecipeList from './components/RecipeList';
+import AddRecipeForm from './components/AddRecipeForm';
+import RecipeDetails from './components/RecipeDetails';
 
 function App() {
-
   return (
-    <>
-      <RecipeList />
-      <AddRecipeForm />
-    </>
-  )
+    <Router>
+      <div className="App">
+        <h1>Recipe Sharing App</h1>
+        <AddRecipeForm />
+        <Routes>
+          <Route path="/" element={<RecipeList />} />
+          <Route path="/recipe/:recipeId" element={<RecipeDetailsWrapper />} />
+        </Routes>
+      </div>
+    </Router>
+  );
 }
 
-export default App
+const RecipeDetailsWrapper = ({ match }) => {
+  const { recipeId } = match.params;
+  return <RecipeDetails recipeId={parseInt(recipeId)} />;
+};
+
+export default App;
