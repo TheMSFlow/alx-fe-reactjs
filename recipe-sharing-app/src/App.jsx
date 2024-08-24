@@ -11,16 +11,11 @@ function App() {
         <AddRecipeForm />
         <Routes>
           <Route path="/" element={<RecipeList />} />
-          <Route path="/recipe/:recipeId" element={<RecipeDetailsWrapper />} />
+          <Route path="/recipe/:recipeId" element={<RecipeDetails />} />
         </Routes>
       </div>
     </Router>
   );
 }
-
-const RecipeDetailsWrapper = ({ match }) => {
-  const { recipeId } = match.params;
-  return <RecipeDetails recipeId={parseInt(recipeId)} />;
-};
 
 export default App;
