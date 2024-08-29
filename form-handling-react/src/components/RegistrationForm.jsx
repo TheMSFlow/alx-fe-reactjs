@@ -20,13 +20,20 @@ const RegistrationForm = () => {
     const handleSubmit = (e) => {
         e.preventDefault();
         
-        if( username.length > 0 && email.length > 0 && password.length > 0){
+        if( username.length > 0 && email.length > 0 && password.length > 0) {
             console.log('Form Submitted:', { username, email, password });
+        } else if (!username){
+            alert('Username required')
+        } else if (!email){
+            alert('Email required')
+        } else if (!password){
+            alert('paswword required')
         } else {
             return alert('Fill in data in fields');
         }
+            
+        }
         
-    }
 
   return (
     <>
