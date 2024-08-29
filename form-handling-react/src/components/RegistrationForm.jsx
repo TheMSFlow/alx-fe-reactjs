@@ -1,12 +1,12 @@
 import React, { useState } from 'react'
 
 const RegistrationForm = () => {
-    const [name, setName] = useState('');
+    const [username, setUsername] = useState('');
     const [email, setEmail] = useState(''); 
     const [password, setPassword] = useState('');
 
     const handleUsernameChange = (e) => {
-        setName(e.target.value);
+        setUsername(e.target.value);
     }
 
     const handleEmailChange = (e) => {
@@ -20,8 +20,8 @@ const RegistrationForm = () => {
     const handleSubmit = (e) => {
         e.preventDefault();
         
-        if( name.length > 0 && email.length > 0 && password.length > 0){
-            console.log('Form Submitted:', { name, email, password });
+        if( username.length > 0 && email.length > 0 && password.length > 0){
+            console.log('Form Submitted:', { username, email, password });
         } else {
             return alert('Fill in data in fields');
         }
@@ -39,9 +39,9 @@ const RegistrationForm = () => {
             <h2> User Registration Form</h2>
             <input 
             type="text" 
-            name="name" 
+            name="username" 
+            value={username}
             placeholder="Enter Username"
-            value={name}
             onChange={handleUsernameChange}
             required
             />
@@ -72,7 +72,7 @@ const RegistrationForm = () => {
                 textAlign: "left",
                 marginTop: "2rem"
             }}>
-            <p>Username is : {name}</p>
+            <p>Username is : {username}</p>
             <p>Email is : {email}</p>
             <p>password is : {password}</p>
             </div>
