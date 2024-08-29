@@ -4,6 +4,7 @@ const RegistrationForm = () => {
     const [username, setUsername] = useState('');
     const [email, setEmail] = useState(''); 
     const [password, setPassword] = useState('');
+    const [errors, setErrors] = useState({username: '', email: '', password: ''})
 
     const handleUsernameChange = (e) => {
         setUsername(e.target.value);
@@ -17,19 +18,37 @@ const RegistrationForm = () => {
         setPassword(e.target.value);
     }
 
+
+    const validateForm = () => {
+        if (!username){
+            setErrors({
+                ...errors,
+                username: 'username required'
+            })
+        } else if (!email){
+            setErrors({
+                ...errors,
+                email: 'email required'
+            })
+        } else if (!password){
+            setErrors({
+                ...errors,
+                password: 'password required'
+            })
+        } else {
+            return errors;
+        }
+
+
+    }
+
     const handleSubmit = (e) => {
         e.preventDefault();
-        
+        validateForm();
         if( username.length > 0 && email.length > 0 && password.length > 0) {
             console.log('Form Submitted:', { username, email, password });
-        } else if (!username){
-            alert('Username required')
-        } else if (!email){
-            alert('Email required')
-        } else if (!password){
-            alert('paswword required')
-        } else {
-            return alert('Fill in data in fields');
+        } else if (!username && !email && !password){
+            console.log('All input fields are empty');
         }
             
         }
@@ -50,16 +69,14 @@ const RegistrationForm = () => {
             value={username}
             placeholder="Enter Username"
             onChange={handleUsernameChange}
-            required
             />
-
+            {!username ? <div>{errors.username}</div> : null}
             <input 
             type="email" 
             name="email" 
             placeholder="Enter Email"
             value={email}
             onChange={handleEmailChange}
-            required
             />
 
             <input 
@@ -68,7 +85,6 @@ const RegistrationForm = () => {
             placeholder="Enter Password"
             value={password}
             onChange={handlePasswordChange}
-            required
             />
 
             <button type="submit">Submit</button>
