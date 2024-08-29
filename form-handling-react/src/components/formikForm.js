@@ -9,7 +9,7 @@ const validationSchema = Yup.object({
 
 const FormikForm = () => (
     <Formik 
-        initialValus={{
+        initialValues={{
         username: '',
         email: '',
         password: ''
