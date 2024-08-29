@@ -20,27 +20,25 @@ const RegistrationForm = () => {
 
 
     const validateForm = () => {
-        if (!username){
-            setErrors({
-                ...errors,
-                username: 'username required'
-            })
-        } else if (!email){
-            setErrors({
-                ...errors,
-                email: 'email required'
-            })
-        } else if (!password){
-            setErrors({
-                ...errors,
-                password: 'password required'
-            })
-        } else {
-            return errors;
+        const newErrors = {};
+    
+        if (!username) {
+          newErrors.username = 'Username is required';
         }
-
-
-    }
+    
+        if (!email) {
+          newErrors.email = 'Email is required';
+        }
+    
+        if (!password) {
+          newErrors.password = 'Password is required';
+        }
+    
+        setErrors(newErrors);
+    
+        return Object.keys(newErrors).length === 0;
+      };
+      
 
     const handleSubmit = (e) => {
         e.preventDefault();
