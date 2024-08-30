@@ -10,6 +10,9 @@ const PostsComponent = () => {
     // Use the useQuery hook to handle data fetching and caching
     const { data, error, isLoading } = useQuery('fetchData', fetchData);
 
+    // Log the data to the console to inspect it
+    console.log(data);
+    
     // Handle loading state
     if (isLoading) return <div>Loading...</div>;
     // Handle error state
@@ -17,9 +20,14 @@ const PostsComponent = () => {
 
     // Render the fetched data
     return (
-        <div>
+        <div style = {{
+            paddingLeft: "2rem"
+        }}>
             {data.map(item => (
-                <div key={item.id}>{item.name}</div>
+                <div key={item.id}>
+                <h3>{item.title}</h3>
+                <p>{item.body}</p>
+            </div>
             ))}
         </div>
     );
