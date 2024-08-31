@@ -1,9 +1,14 @@
 import { useQuery } from 'react-query';
 
+const handleDataRefetch = () => {
+    fetchPosts();
+}
+
 // Define a fetch function that can be used to fetch data from an API
 const fetchPosts = async () => {
     const res = await fetch(' https://jsonplaceholder.typicode.com/posts');
     return res.json();
+    
 };
 
 const PostsComponent = () => {
@@ -35,6 +40,10 @@ const PostsComponent = () => {
             paddingLeft: "2rem",
             paddingTop: "4rem"
         }}>
+            <button onClick = {handleDataRefetch}
+            style = {{
+                marginTop: "2rem"
+            }}>Refetch Data</button>
             {data.map(item => (
                 <div key={item.id}>
                 <h3>{item.title}</h3>
