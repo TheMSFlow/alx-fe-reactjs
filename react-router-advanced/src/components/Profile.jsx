@@ -1,5 +1,7 @@
 import React from 'react'
 import { Routes, Route, Link, Outlet } from 'react-router-dom'
+import ProfileDetails from './components/ProfileDetails'
+import ProfileSettings from './components/ProfileSettings'
 
 const Profile = () => {
   return (
