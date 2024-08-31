@@ -23,14 +23,17 @@ const PostsComponent = () => {
     console.log(data, isLoading, isFetching);
     
     // Handle loading state
-    if (isLoading) return <div>Loading...</div>;
+    if (isLoading) return <div style = {{
+        paddingLeft: "2rem",
+    }}>Loading...</div>;
     // Handle error state
     if (isError) return <div>Error loading data</div>;
 
     // Render the fetched data
     return (
         <div style = {{
-            paddingLeft: "2rem"
+            paddingLeft: "2rem",
+            paddingTop: "4rem"
         }}>
             {data.map(item => (
                 <div key={item.id}>
