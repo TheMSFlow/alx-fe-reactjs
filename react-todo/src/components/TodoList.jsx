@@ -72,7 +72,8 @@ const TodoList = () => {
                             </span>
                         </label>
                         <button 
-                            onClick={() => deleteTodo(todo.id)} 
+                            onClick={() => deleteTodo(todo.id)}
+                            data-testid={`delete-button-${todo.id}`}  
                             style={{ marginLeft: '10px', cursor: 'pointer' }}
                         >
                             Delete
