@@ -16,6 +16,8 @@ const RecipeDetail = () => {
       <h1>{recipe.title}</h1>
       <img src={recipe.image} />
       <p>{recipe.summary}</p>
+      <h2>Ingredients: {recipe.ingredients}</h2>
+      <h3>Instructions: {recipe.instructions}</h3>
     </>
 
   )
