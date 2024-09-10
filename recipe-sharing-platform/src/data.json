@@ -3,18 +3,18 @@
       "id": 1,
       "title": "Jollof Rice",
       "summary": "This is a foolproof recipe for cooking Jollof rice, Nigeria’s most popular dish. I like to serve it as a side with my West African-style grilled beef (Suya), but it can also be a main course.",
-      "image": "jollof-rice.jpg"
+      "image": "https://raw.githubusercontent.com/TheMSFlow/alx-fe-reactjs/main/recipe-sharing-platform/src/image/jollof-rice.jpg"
     },
     {
       "id": 2,
       "title": "Beef Miso Ramen",
       "summary": "This flavorful bowl of miso ramen is full of delicious flavors that will make your palate sing! If you've been dreaming of Japanese cuisine, this is the perfect meal for you. Add a hard-boiled egg, mushrooms, spicy chili oil, or toppings of your choice.",
-      "image": "beef-miso-ramen.jpg"
+      "image": "https://raw.githubusercontent.com/TheMSFlow/alx-fe-reactjs/main/recipe-sharing-platform/src/image/beef-miso-ramen.jpg"
     },
     {
       "id": 3,
       "title": "Ground Beef and Broccoli Stir Fry",
       "summary": "This ground beef and broccoli stir fry is an ideal weeknight family dinner. Convenient pre-cut broccoli florets save time, and ground beef takes the place of sliced beef for ease. The simple stir-fry sauce brings it all together.",
-      "image": "ground-beef.jpg"
+      "image": "https://raw.githubusercontent.com/TheMSFlow/alx-fe-reactjs/main/recipe-sharing-platform/src/image/ground-beef.jpg"
     }
   ]
