@@ -27,7 +27,7 @@ const AddRecipeForm = () => {
     } 
     
     if (!fields.ingredients.trim()) {
-      validateFields.ingredients = "Recipe ingredients is required"
+      validateFields.ingredients = "Recipe ingredients are required"
     } else {
       const ingredientsArray = fields.ingredients.split(',')
       .map(i => i.trim())
@@ -39,7 +39,7 @@ const AddRecipeForm = () => {
     }
     
     if (!fields.preparation.trim()) {
-      validateFields.preparation = "Recipe preparation is required"
+      validateFields.preparation = "Preparation steps are required"
     } 
       setError(validateFields)
       console.log('This errors:', validateFields);
