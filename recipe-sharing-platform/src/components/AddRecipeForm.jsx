@@ -1,6 +1,5 @@
 import React, { useState }from 'react'
 
-
 const AddRecipeForm = () => {
   const [fields, setFields] = useState({
     title: '',
@@ -12,6 +11,7 @@ const AddRecipeForm = () => {
   const [errors, setErrors] = useState({})
 
   const handleChange = (e) => {
+    const {name, value} = e.target;
     setFields({
       ...fields, [name]:e.target.value
     });
@@ -43,10 +43,23 @@ const AddRecipeForm = () => {
     } 
       setErrors(validateFields)
       console.log('This errors:', validateFields);
-      console.log(fields);
+      console.log('Results:', fields);
 
     if(Object.keys(validateFields).length === 0) {
-      alert("Form Sent")
+      alert('Form Sent');
+      const allFieldsNotEmpty = Object.values(fields).every(value => value !== '');
+      if(allFieldsNotEmpty) {
+        setAllData((prevData) => [
+          ...prevData,
+          {id: prevData.length + 1,
+            title: fields.title,
+            summary: fields.summary,
+            ingredients: fields.ingredients,
+            preparation: fields.preparation,
+          },
+        ]);
+      }
+      
     }
   }
 
