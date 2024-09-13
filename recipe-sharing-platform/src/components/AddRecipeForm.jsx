@@ -12,9 +12,8 @@ const AddRecipeForm = () => {
   const [error, setError] = useState({})
 
   const handleChange = (e) => {
-    const {name, value} = e.target;
     setFields({
-      ...fields, [name]:value
+      ...fields, [name]:e.target.value
     });
   }
 
