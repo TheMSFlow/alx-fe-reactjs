@@ -47,18 +47,18 @@ const AddRecipeForm = () => {
 
     if(Object.keys(validateFields).length === 0) {
       alert('Form Sent');
-      const allFieldsNotEmpty = Object.values(fields).every(value => value !== '');
-      if(allFieldsNotEmpty) {
-        setAllData((prevData) => [
-          ...prevData,
-          {id: prevData.length + 1,
-            title: fields.title,
-            summary: fields.summary,
-            ingredients: fields.ingredients,
-            preparation: fields.preparation,
-          },
-        ]);
-      }
+      // const allFieldsNotEmpty = Object.values(fields).every(value => value !== '');
+      // if(allFieldsNotEmpty) {
+      //   setAllData((prevData) => [
+      //     ...prevData,
+      //     {id: prevData.length + 1,
+      //       title: fields.title,
+      //       summary: fields.summary,
+      //       ingredients: fields.ingredients,
+      //       preparation: fields.preparation,
+      //     },
+      //   ]);
+      // }
       
     }
   }
