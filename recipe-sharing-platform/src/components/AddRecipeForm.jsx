@@ -9,7 +9,7 @@ const AddRecipeForm = () => {
     preparation: ''
   });
 
-  const [error, setError] = useState({})
+  const [errors, setErrors] = useState({})
 
   const handleChange = (e) => {
     setFields({
@@ -41,7 +41,7 @@ const AddRecipeForm = () => {
     if (!fields.preparation.trim()) {
       validateFields.preparation = "Preparation steps are required"
     } 
-      setError(validateFields)
+      setErrors(validateFields)
       console.log('This errors:', validateFields);
       console.log(fields);
 
@@ -57,12 +57,12 @@ const AddRecipeForm = () => {
       <label htmlFor="title">Recipe title</label>
       <input className='border-solid border-2 border-slate-200 pl-2 leading-7' type="text" name='title' placeholder='Enter recipe name'
       onChange={handleChange}/>
-      {error.title && <span className='text-red-600 text-xs'>{error.title}</span>}
+      {errors.title && <span className='text-red-600 text-xs'>{errors.title}</span>}
 
       <label className='mt-4' htmlFor="summary"></label> Recipe summary
       <input className='border-solid border-2 border-slate-200 pl-2 leading-7'  type="text" name="summary" placeholder="Enter short description" 
       onChange={handleChange}/>
-      {error.summary && <span className='text-red-600 text-xs'>{error.summary}</span>}
+      {errors.summary && <span className='text-red-600 text-xs'>{errors.summary}</span>}
 
       <label className='mt-4' htmlFor="recipeimage">Upload image</label>
       <input className='' type="file" name="recipeimage" />
@@ -70,12 +70,12 @@ const AddRecipeForm = () => {
       <label className='mt-4' htmlFor="ingredients">Recipe ingredients</label>
       <textarea className='border-solid border-2 border-slate-200 pl-2 leading-7 '  name="ingredients" cols="40" rows="10" 
       onChange={handleChange}/>
-      {error.ingredients && <span className='text-red-600 text-xs'>{error.ingredients}</span>}
+      {errors.ingredients && <span className='text-red-600 text-xs'>{errors.ingredients}</span>}
 
       <label className='mt-4' htmlFor="preparation">Recipe preparation</label>
       <textarea className='border-solid border-2 border-slate-200 pl-2 leading-7'  name="preparation" cols="40" rows="10" 
       onChange={handleChange}/>
-      {error.preparation && <span className='text-red-600 text-xs'>{error.preparation}</span>}
+      {errors.preparation && <span className='text-red-600 text-xs'>{errors.preparation}</span>}
 
       <button className='bg-lime-800 py-2 mt-2 text-white mt-8' type="submit">Submit</button>
     </form>
