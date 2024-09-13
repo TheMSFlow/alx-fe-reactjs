@@ -18,6 +18,8 @@ const recipeList = data.map((data) => {
         <img src={data.image} width="auto" height="auto"/>
         <h2>{data.title}</h2>
         <p>{data.summary}</p>
+        <p>{data.ingredients}</p>
+        <p>{data.preparation}</p>
         </li>
     </ul>
     )
