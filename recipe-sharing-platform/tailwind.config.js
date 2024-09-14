@@ -4,7 +4,11 @@ export default {
   darkMode: false,
   content: [],
   theme: {
-    extend: {},
+    extend: {
+      screens: {
+        'sm': '430px', // => @media (min-width: 430px) { ... }
+      }
+    },
   },
   plugins: [],
 }
