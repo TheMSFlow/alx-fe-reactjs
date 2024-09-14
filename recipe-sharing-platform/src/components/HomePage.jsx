@@ -28,7 +28,7 @@ const handleNav = (id) => {
        <h2 className='text-blue-950 text-3xl md:text-4xl capitalize font-medium '>{data.title}</h2>
        <p className='text-blue-950 text-lg md:text-2xl'>{data.summary}</p>
        <p className='text-blue-950 text-[1.15rem] md:text-[1.5rem]'><span className='font-medium'>Ingredients:</span> {data.ingredients}</p>
-       <p className='text-blue-950 text-[1.15rem] md:text-[1.5rem]'><span className='font-medium'>Preparation Steps:</span> {data.preparation}</p>
+       <p className='text-blue-950 text-[1.15rem] md:text-[1.5rem]'><span className='font-medium'>Preparation Steps:</span> {data.instructions}</p>
        <button onClick={() => handleNav(data.id)} className='mt-4 py-4 bg-blue-950 text-white text-xl'>View details</button>
      </li>
     ))}

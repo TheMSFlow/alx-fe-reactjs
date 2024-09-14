@@ -26,7 +26,7 @@ const RecipeDetail = () => {
        <h2 className='text-blue-950 text-3xl md:text-4xl capitalize font-medium '>{recipe.title}</h2>
        <p className='text-blue-950 text-lg md:text-2xl'>{recipe.summary}</p>
        <p className='text-blue-950 text-[1.15rem] md:text-[1.5rem]'><span className='font-medium'>Ingredients:</span> {recipe.ingredients}</p>
-       <p className='text-blue-950 text-[1.15rem] md:text-[1.5rem]'><span className='font-medium'>Preparation Steps:</span> {recipe.preparation}</p>
+       <p className='text-blue-950 text-[1.15rem] md:text-[1.5rem]'><span className='font-medium'>Preparation Steps:</span> {recipe.instructions}</p>
      </div>
     </>
 
