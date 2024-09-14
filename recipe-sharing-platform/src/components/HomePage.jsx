@@ -1,6 +1,7 @@
 import React from 'react'
 import { useState, useEffect } from 'react'
 import data from '../data.json'
+import { useNavigate } from 'react-router-dom'
 
 const initialData = data
 
@@ -10,6 +11,12 @@ const [data, setData] = useState(initialData)
 useEffect(() => {
     setData(initialData)
 },[])
+
+const navigate = useNavigate();
+
+const handleNav = (id) => {
+  navigate(`/recipe/${id}`)
+}
 
   return (
     <>
@@ -22,6 +29,7 @@ useEffect(() => {
        <p className='text-blue-950 text-lg md:text-2xl'>{data.summary}</p>
        <p className='text-blue-950 text-[1.15rem] md:text-[1.5rem]'><span className='font-medium'>Ingredients:</span> {data.ingredients}</p>
        <p className='text-blue-950 text-[1.15rem] md:text-[1.5rem]'><span className='font-medium'>Preparation Steps:</span> {data.preparation}</p>
+       <button onClick={() => handleNav(data.id)} className='mt-4 py-4 bg-blue-950 text-white text-xl'>View details</button>
      </li>
     ))}
     </ul> 
