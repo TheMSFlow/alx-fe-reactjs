@@ -88,7 +88,7 @@ const Search = () => {
                 <img className='object-contain' src={user.avatar_url} alt={userData.name} width="100" />
                 <div>
                     <h2 className='text-gray-700 text-6xl inline-block'>{index + 1}. {user.login}</h2>
-                    <h3 className='text-3xl mt-1'>{user.url}</h3>
+                    <h3 className='text-3xl mt-1'>{user.html_url}</h3>
                     <p className='text-xl italic mt-2'>{user.bio}</p>
                     <p>Public Repositories: {user.repos_url}</p>
                  </div> 
