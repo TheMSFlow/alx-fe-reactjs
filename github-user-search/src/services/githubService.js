@@ -28,9 +28,16 @@ import axios from 'axios'
                 users: detailedUsers,
             };
 
-        } catch(err) {
-        console.log("Error Msg:", err)
-        throw err;
+        } catch (err) {
+            console.error('Error fetching user data:', err.message);
+    
+            if (err.response && err.response.status === 403) {
+                throw new Error('GitHub API rate limit exceeded. Please try again later.');
+            } else if (err.response && err.response.status === 404) {
+                throw new Error('No users found.');
+            } else {
+                throw new Error('Failed to fetch user data. Please try again.');
+            }
     }
     };
   

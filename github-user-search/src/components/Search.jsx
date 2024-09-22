@@ -1,52 +1,57 @@
-import React from 'react'
-import { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { fetchUserData } from '../services/githubService'
 
 
 const Search = () => {
-    const [username, setUsername] = useState('');
-    const [location, setLocation] = useState('');
-    const [minRepos, setMinRepos] = useState('');
+    const [searchParams, setSearchParams] = useState({
+        username: '',
+        location: '',
+        minRepos: ''
+    });
     const [userData, setUserData] = useState({total_count: 0, users: [] });
-    const [error, setError] = useState(null);
-    const [loading, setLoading] = useState(false);
+    const [status, setStatus] = useState({loading:false, error: null});
     const [page, setPage] = useState(1);
     const [perPage] = useState(30);
 
     const handleChange = (e) => {
         console.log(e);
         const { name, value } = e.target;
-        if (name === 'username') {
-            setUsername(value);
-        } else if (name === 'location') {
-            setLocation(value);
-        } else if (name === 'minRepos') {
-            setMinRepos(value);
-        }
+        setSearchParams(prevParams => ({...prevParams, [name]: e.target.value}));
     };
 
-    const handleSearch = async (e) => {
-        e.preventDefault();
-        setLoading("Loading...");
-        setError(null);
-     try{
-        const data = await fetchUserData(username, location, minRepos, perPage, page);
-        if (location && data.location && !data.location.toLowerCase().includes(location.toLowerCase())) {
-            setError(`No users found in location: ${location}`);
-            setUserData({ total_count: 0, users: [] });
-        } else if (minRepos && data.public_repos < parseInt(minRepos)) {
-            setError(`User has less than ${minRepos} repositories`);
-            setUserData({ total_count: 0, users: [] });
-        } else {
-            setUserData(data);
+        useEffect (() => {
+            const handleSearch = async () => {
+                setStatus({loading: true, error: null});
+             try{
+                const data = await fetchUserData(
+                    searchParams.username, 
+                    searchParams.location, 
+                    searchParams.minRepos, 
+                    perPage, 
+                    page
+                );
+                    setUserData(data);
+            } catch (error) {
+                setStatus({ loading: false, error: 'User not found' });
+                setUserData({ total_count: 0, users: [] });
+            } finally {
+                setStatus((prev) => ({
+                    ...prev, loading: false
+                }))
+             }
+            };
+
+            if (searchParams.username.trim()) {
+                handleSearch();
+            } 
+        },[searchParams.username, page]);
+
+        const handleSubmit = (e) => {
+            e.preventDefault();
+            setPage(1);
+            handleSearch();
         }
-    } catch (error) {
-        setError('User not found');
-        setUserData([]);
-    } finally {
-        setLoading(false);
-     }
-    };
+    
 
     const totalPages = Math.ceil(userData.total_count / perPage); 
 
@@ -65,13 +70,13 @@ const Search = () => {
 
   return (
     <>
-     <form className='flex flex-col w-1/3 justify-center items-center mb-16' onSubmit={handleSearch}>
+     <form className='flex flex-col w-1/3 justify-center items-center mb-16' onSubmit={handleSubmit}>
                 <input 
                     className='border-b-2 border-blue-800 text-lg py-4 px-4 lg:w-[100%] mb-6 placeholder-slate-400' 
                     onChange={handleChange} 
                     type='text' 
                     name='username' 
-                    value={username} 
+                    value={searchParams.username} 
                     placeholder='enter github username'
                     />
                 <input
@@ -79,7 +84,7 @@ const Search = () => {
                     onChange={handleChange}
                     type='text'
                     name='location'
-                    value={location}
+                    value={searchParams.location}
                     placeholder='Enter location (optional)'
                 />
                 <input
@@ -87,14 +92,14 @@ const Search = () => {
                     onChange={handleChange}
                     type='number'
                     name='minRepos'
-                    value={minRepos}
+                    value={searchParams.minRepos}
                     placeholder='Minimum repositories (optional)'
                 />
     <button type='submit' className='bg-blue-950 text-slate-100 text-2xl py-4 px-2 lg:w-[100%] border rounded-2xl'>Search</button>
     </form>
 
-    {loading && <p>{loading}</p>}
-    {error && <p>{error}</p>}
+    {status.loading && <p>{status.loading}</p>}
+    {status.error && <p>{status.error}</p>}
     {userData && (
         <div className='w-[100%] flex flex-col justify-center items-center'>
             <h2>{userData.users.length > 0 ? `Search Results: ${userData.users.length}` : null} </h2>
@@ -113,7 +118,7 @@ const Search = () => {
             </ul>
             {userData.users.length > 29 && <div className='flex flex-row gap-8 mt-12 mb-[10rem]'>
                 <button className='py-4 px-10 bg-gray-700 text-slate-100 rounded-lg' onClick={handlePrevPage} disabled={page === 1}>Previous</button>
-                <button className='py-4 px-10 bg-gray-700 text-slate-100 rounded-lg' onClick={handleNextPage} disabled={page.length === page.length - 1}>Next</button>
+                <button className='py-4 px-10 bg-gray-700 text-slate-100 rounded-lg' onClick={handleNextPage} disabled={page === totalPages}>Next</button>
             </div>}
             
                 
