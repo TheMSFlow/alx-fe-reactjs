@@ -19,7 +19,7 @@ const Search = () => {
         setSearchParams(prevParams => ({...prevParams, [name]: e.target.value}));
     };
 
-        useEffect (() => {
+        
             const handleSearch = async () => {
                 setStatus({loading: true, error: null});
              try{
@@ -32,7 +32,7 @@ const Search = () => {
                 );
                     setUserData(data);
             } catch (error) {
-                setStatus({ loading: false, error: 'User not found' });
+                setStatus({ loading: false, error: 'Looks like we cant find the user' });
                 setUserData({ total_count: 0, users: [] });
             } finally {
                 setStatus((prev) => ({
@@ -40,11 +40,6 @@ const Search = () => {
                 }))
              }
             };
-
-            if (searchParams.username.trim()) {
-                handleSearch();
-            } 
-        },[searchParams.username, page]);
 
         const handleSubmit = (e) => {
             e.preventDefault();
