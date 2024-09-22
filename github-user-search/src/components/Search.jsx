@@ -9,7 +9,7 @@ const Search = () => {
         minRepos: ''
     });
     const [userData, setUserData] = useState({total_count: 0, users: [] });
-    const [status, setStatus] = useState({loading:false, error: null});
+    const [status, setStatus] = useState({loading:'', error: null});
     const [page, setPage] = useState(1);
     const [perPage] = useState(30);
 
@@ -21,7 +21,7 @@ const Search = () => {
 
         
             const handleSearch = async () => {
-                setStatus({loading: true, error: null});
+                setStatus({loading: 'Loading', error: null});
              try{
                 const data = await fetchUserData(
                     searchParams.username, 
@@ -32,7 +32,7 @@ const Search = () => {
                 );
                     setUserData(data);
             } catch (error) {
-                setStatus({ loading: false, error: 'Looks like we cant find the user' });
+                setStatus({ loading: '', error: 'Looks like we cant find the user' });
                 setUserData({ total_count: 0, users: [] });
             } finally {
                 setStatus((prev) => ({
