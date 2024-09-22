@@ -14,7 +14,6 @@ const Search = () => {
     const [perPage] = useState(30);
 
     const handleChange = (e) => {
-        console.log(e);
         const { name, value } = e.target;
         setSearchParams(prevParams => ({...prevParams, [name]: e.target.value}));
     };

@@ -29,7 +29,6 @@ import axios from 'axios'
             };
 
         } catch (err) {
-            console.error('Error fetching user data:', err.message);
     
             if (err.response && err.response.status === 403) {
                 throw new Error('GitHub API rate limit exceeded. Please try again later.');
